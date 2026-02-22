@@ -266,6 +266,12 @@ footer {
     url("messaggio.jpg") center / cover no-repeat;
 }
 
+.card-amicizia {
+  background:
+    linear-gradient(rgba(255, 252, 248, 0.50), rgba(255, 252, 248, 0.74)),
+    url("amicizia.jpeg") center / cover no-repeat;
+}
+
 .card-pazienti {
   background:
     linear-gradient(rgba(255, 252, 248, 0.88), rgba(255, 252, 248, 0.94)),
