@@ -1,0 +1,13 @@
+﻿{
+  "name": "studio-serenita-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito scherzoso e fittizio di una psicologa - demo statica",
+  "scripts": {
+    "dev": "http-server . -p 5500 -c-1",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

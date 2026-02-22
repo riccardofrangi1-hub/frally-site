@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi sono</title>
+  <meta name="description" content="Pagina Chi sono con descrizione ironica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="chi-sono-page">
+  <div class="grain"></div>
+
+  <header class="page-header">
+    <nav class="topbar">
+      <span class="logo">Chi sono</span>
+      <a class="cta" href="index.html">Torna alla home</a>
+    </nav>
+    <p class="subtitle">Qui inserirai la descrizione ironica della tua amica.</p>
+    <button id="playSongBtn" class="cta music-btn" type="button">Avvia canzone</button>
+    <audio id="chiSonoSong" preload="metadata" src="Quando il mondo gira veloce.mp3"></audio>
+  </header>
+
+  <main>
+    <section class="card-section">
+      <h2>Descrizione</h2>
+      <article class="card">
+        <p>
+          Testo placeholder: scrivi qui una presentazione ironica, simpatica e personale.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const backgrounds = [
+        { file: "1.PNG", position: "center" },
+        { file: "2.PNG", position: "top center" },
+        { file: "3.JPG", position: "top center" },
+        { file: "4.JPG", position: "top center" },
+        { file: "5.JPG", position: "center" }
+      ];
+      const overlay = "linear-gradient(rgba(246, 239, 231, 0.58), rgba(233, 239, 232, 0.62))";
+      let index = 0;
+
+      function applyBackground(background) {
+        document.body.style.background =
+          overlay + ', url("' + background.file + '") ' + background.position + ' / cover no-repeat fixed';
+      }
+
+      applyBackground(backgrounds[index]);
+      setInterval(() => {
+        index = (index + 1) % backgrounds.length;
+        applyBackground(backgrounds[index]);
+      }, 4000);
+    })();
+
+    (function () {
+      const button = document.getElementById("playSongBtn");
+      const song = document.getElementById("chiSonoSong");
+      let playing = false;
+
+      async function tryAutoplay() {
+        try {
+          await song.play();
+          playing = true;
+          button.textContent = "Metti in pausa";
+        } catch (err) {
+          button.textContent = "Avvia canzone";
+        }
+      }
+
+      button.addEventListener("click", async () => {
+        if (!playing) {
+          try {
+            await song.play();
+            playing = true;
+            button.textContent = "Metti in pausa";
+          } catch (err) {
+            button.textContent = "Play non disponibile";
+          }
+          return;
+        }
+
+        song.pause();
+        playing = false;
+        button.textContent = "Avvia canzone";
+      });
+
+      song.addEventListener("ended", () => {
+        playing = false;
+        button.textContent = "Avvia canzone";
+      });
+
+      tryAutoplay();
+    })();
+  </script>
+</body>
+</html>
