@@ -274,8 +274,8 @@ footer {
 
 .card-pazienti {
   background:
-    linear-gradient(rgba(255, 252, 248, 0.88), rgba(255, 252, 248, 0.94)),
-    var(--card);
+    linear-gradient(rgba(255, 252, 248, 0.62), rgba(255, 252, 248, 0.78)),
+    url("matti.webp") center / cover no-repeat;
 }
 
 .page-header {
